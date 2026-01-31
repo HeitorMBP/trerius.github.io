@@ -2,8 +2,9 @@
 <html lang="pt-br">
 <head>
     <?php
-    include('process/conn.php');
     session_start();
+    include('process/conn.php');
+    
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         $_SESSION['error'] = "Faça login para continuar";
