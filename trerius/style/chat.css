@@ -1,0 +1,25 @@
+@import "global.css";
+body{
+    background-color: rgb(59, 59, 59);
+}
+
+
+#chat .empty{
+    width: 49%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.topMenu{
+    width: 49%;
+    position: absolute;
+    top: 0%;
+}
+
+.topMenu img{
+   float: right;
+   margin-top: 12px;
+   margin-right: 20px;
+   cursor: pointer;
+}
