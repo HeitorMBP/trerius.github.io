@@ -1,0 +1,65 @@
+@import "global.css";
+
+*{
+    text-decoration: none;
+}
+
+header{
+    /* border: 1px solid white; */
+    display: flex;
+    height: 60px;
+    margin: 0%;
+
+}
+
+.esquerda-topo{
+    width: 50%;
+}
+
+.direita-topo{
+    width: 50%;
+    text-align: end;
+}
+
+main{
+    /* border: 1px solid white; */
+    display: flex;
+    height: 875px;
+    margin: 0%;
+
+}
+
+.esquerda-meio{
+    width: 33%;
+}
+
+.meio-meio{
+    width: 34%;
+    text-align: center;
+}
+
+.direita-meio{
+    width: 32%;
+    text-align: end;
+    align-items: end;
+    margin-left: 1%;
+    /* border: 1px solid white; */
+}
+
+footer{
+    /* border: 1px solid white; */
+    display: flex;
+    height: 10%;
+    margin: 0%;
+}
+
+.esquerda-baixo{
+    width: 50%;
+}
+
+.direita-baixo{
+    width: 50%;
+    text-align: end;
+    align-items: end;
+    
+}
