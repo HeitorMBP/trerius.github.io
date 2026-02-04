@@ -6,8 +6,10 @@
     
     <title>Document</title>
     <?php
+    ob_start();
+     session_start();
     include('process/conn.php');//conexão = $pdo
-    session_start();
+   
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {   
         $_SESSION['error'] = "Faça o Login!";

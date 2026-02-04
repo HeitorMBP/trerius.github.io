@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload de arquivos</title>
      <?php
-     session_start();
+     ob_start();
+    session_start();
     include('process/conn.php');//conexão = $pdo
     
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))

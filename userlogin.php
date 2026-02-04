@@ -15,7 +15,8 @@
         }
     </style>
     <?php
-        session_start();
+        ob_start();
+    session_start();
         include('process/conn.php');//conexão = $pdo
 
         if(isset($_POST['acao'])){

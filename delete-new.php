@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <?php
-    include('process/conn.php');//conexão = $pdo
+    ob_start();
     session_start();
+    include('process/conn.php');//conexão = $pdo
+    
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");

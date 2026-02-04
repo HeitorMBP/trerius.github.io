@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <?php
+    ob_start();
     session_start();
     include('process/conn.php');
     

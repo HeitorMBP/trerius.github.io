@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     session_start();
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
