@@ -11,14 +11,31 @@ include('process/conn.php');//conexão = $pdo
 
     if(!$_SESSION['isAdmin']){
         header("location:index.php");
+        exit;
     }
+
+// handle POST before any output so header() works
+if(isset($_POST['acao'])){
+    if(isset($_FILES['file'])){
+        $arquivo = $_FILES['file'];
+        $arquivoNovo = explode('.',$arquivo['name']);
+        if($arquivoNovo[sizeof($arquivoNovo)-1] != 'jpg'){
+            die('Você não pode fazer upload desse tipo de arquivoNovo, faça de JPG');
+        }
+        move_uploaded_file($arquivo['tmp_name'],'NEWS/'.$arquivo['name']);
+        $sql = "INSERT INTO `tb_noticias` (`id_noticia`, `nm_imagem`, `nm_titulo`, `ds_noticia`) VALUES (NULL, 'NEWS/".$arquivo['name']."', '".$_POST['title']."', '".$_POST['text']."');";
+        $pdo->exec($sql);
+        header("Location: index.php");
+        exit;
+    }
+}
 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="Trerius.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload de arquivos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -42,33 +59,7 @@ include('process/conn.php');//conexão = $pdo
             <div class="col">
 
 
-            <?php
 
-                if(isset($_POST['acao'])){
-                    if(isset($_FILES['file'])){
-                        $arquivo = $_FILES['file'];
-
-                        $arquivoNovo = explode('.',$arquivo['name']);
-
-                        if($arquivoNovo[sizeof($arquivoNovo)-1] != 'jpg'){
-                            die('Você não pode fazer upload desse tipo de arquivoNovo, faça de JPG');
-                            
-                        }else{
-                            echo 'Podemos continuar...';              
-                            move_uploaded_file($arquivo['tmp_name'],'NEWS/'.$arquivo['name']);
-
-                           
-                            echo "<script>alert(".$_POST['title'].")</script>";
-                            $sql = "INSERT INTO `tb_noticias` (`id_noticia`, `nm_imagem`, `nm_titulo`, `ds_noticia`) VALUES (NULL, 'NEWS/".$arquivo['name']."', '".$_POST['title']."', '".$_POST['text']."');";
-                            
-                            $pdo -> exec($sql);
-
-                            header("Location:index.php");
-                        }
-                    }
-                }   
-                
-            ?>
                 
                 <!-- <form action="" method="post" enctype="multipart/form-data">
                     <input type="file" name="file" /><br><br>

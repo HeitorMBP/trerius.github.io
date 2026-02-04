@@ -2,29 +2,31 @@
 session_start();
 include('process/conn.php'); //conexão = $pdo
 
+// auth check must run before any output
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+    header("location:userlogin.php");
+    exit;
+}
+
+// populate commonly used session vars for the page
+$logado = $_SESSION['login'] ?? 'USER';
+$id = $_SESSION['id'] ?? null;
+$isAdmin = $_SESSION['isAdmin'] ?? 0;
+
+// capture session error to echo later (avoid output here)
+$sessionError = isset($_SESSION['error']) ? $_SESSION['error'] : null;
+if(isset($_SESSION['error'])){ unset($_SESSION['error']); }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <?php
-    
-     if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
-    {
-        header("location:userlogin.php");
-        $logado = "USER";
-        $isAdmin = 0;
-    }else{
-        $logado = $_SESSION['login'];
-        $id = $_SESSION['id'];
-        $isAdmin = $_SESSION['isAdmin'] ;
-        
+    if(isset($sessionError)){
+        echo "<script type='text/javascript'>alert('" . addslashes($sessionError) . "');</script>";
+        unset($sessionError);
     }
-    if(isset($_SESSION['error'])){
-         echo "<script type='text/javascript'>alert('" . $_SESSION['error'] . "');</script>";
-        unset($_SESSION['error']); 
-    }
-    
     ?>
 
 
@@ -33,7 +35,7 @@ include('process/conn.php'); //conexão = $pdo
 
     <meta author="M4St3r_Fr0m_Th3_d4Rk">
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="Trerius.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="120">
     <link rel="stylesheet" href="style/div.css">
