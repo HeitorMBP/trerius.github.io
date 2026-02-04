@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <?php
-    ob_start();
-    session_start();
-    include('process/conn.php');
-    
+<?php
+session_start();
+include('process/conn.php');
+
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         $_SESSION['error'] = "Faça login para continuar";
@@ -27,7 +23,10 @@
 
         $_SESSION['imagem'] = $imagem;
     }
-    ?>
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conta de <?php echo $logado; ?></title>
