@@ -34,6 +34,7 @@ include('process/conn.php'); //conexão = $pdo
     <meta author="M4St3r_Fr0m_Th3_d4Rk">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="120">
     <link rel="stylesheet" href="style/div.css">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -343,6 +344,3 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 
 </body>
 </html>
-<?php
-header("refresh:120");
-?>
