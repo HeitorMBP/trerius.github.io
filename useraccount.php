@@ -24,22 +24,29 @@ include('process/conn.php');
         $_SESSION['imagem'] = $imagem;
     }
 
-// handle account POSTs before any output
-if(isset(
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-)){}
+// handle account POSTs before any output (preserve original logic)
+if(isset($_POST['salvar'])){
+    if(isset($_FILES['file'])){
+        $arquivo = $_FILES['file'];
+        $arquivoNovo = explode('.',$arquivo['name']);
+        if($arquivoNovo[sizeof($arquivoNovo)-1] != 'jpg'){
+            die('Você não pode fazer upload desse tipo de arquivoNovo, faça de JPG');
+        }else{
+            move_uploaded_file($arquivo['tmp_name'],'profilePics/'.$arquivo['name']);
+            $sql = "UPDATE `tb_user` SET `nm_imagem` = 'profilePics/".$arquivo['name']."' WHERE `tb_user`.`id_user` =".$id;
+            $pdo -> exec($sql);
+            header('refresh:1');
+            exit;
+        }
+    }
+}
+
+if(isset($_POST['salvar-texto'])){
+    $sql = "UPDATE `tb_user` SET `ds_about` = '".$_POST['about']."' WHERE `tb_user`.`id_user` =".$id;
+    $pdo -> exec($sql);
+    header('refresh:1');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -165,18 +172,6 @@ if(isset(
 
 
 
-
-
-<?php
-    if(isset($_POST['salvar-texto'])){
-        $sql = "UPDATE `tb_user` SET `ds_about` = '".$_POST['about']."' WHERE `tb_user`.`id_user` =".$id;
-                            
-                            $pdo -> exec($sql);
-                            header('refresh:1');
-    }
-
-
-?>
 
 
 

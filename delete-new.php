@@ -50,22 +50,6 @@ if(isset($_POST['acao'])){
             <div class="col ">
 
 
-            <?php
-
-                if(isset($_POST['acao'])){
-
-
-                            
-                            
-                            $sql = "DELETE FROM `tb_noticias` WHERE `tb_noticias`.`id_noticia` = ".$_POST['noticia'];
-                            
-                            $pdo -> exec($sql);
-
-                            header("Location:index.php");
-                        }
-               
-            ?>
-                
                     <div class="card m-5 bg-dark" style="width: 20rem;">
                         <div class="card-body">
                             <h5 class="card-title">Apague uma notícia</h5>

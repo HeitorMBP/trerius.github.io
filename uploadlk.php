@@ -9,7 +9,17 @@ include('process/conn.php');//conexão = $pdo
 
     $id = $_SESSION['id'];
 
+// handle POST before any output so header() works (preserve original logic)
+if(isset($_POST['acao'])){
+    echo "<script>alert(".$_POST['title'].")</script>";
+    $sql = "INSERT INTO `tb_noticias` (`id_noticia`, `nm_imagem`, `nm_titulo`, `ds_noticia`) VALUES (NULL, '".$_POST['link']."', '".$_POST['title']."', '".$_POST['text']."');";
+    $pdo -> exec($sql);
+    header("Location: index.php");
+    exit;
+}
 
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -37,18 +47,7 @@ include('process/conn.php');//conexão = $pdo
             <div class="col ">
 
 
-            <?php
 
-                if(isset($_POST['acao'])){
-                            echo "<script>alert(".$_POST['title'].")</script>";
-                            $sql = "INSERT INTO `tb_noticias` (`id_noticia`, `nm_imagem`, `nm_titulo`, `ds_noticia`) VALUES (NULL, '".$_POST['link']."', '".$_POST['title']."', '".$_POST['text']."');";
-                            
-                            $pdo -> exec($sql);
-
-                            header("Location:index.php");
-                        }
-               
-            ?>
                 
                     <div class="card m-5 bg-dark" style="width: 20rem;">
                         <div class="card-body">

@@ -89,18 +89,7 @@
             }
         }
 
-                $pdo -> exec($sql);
-                echo $senha . "<br>";
-                echo $senha_hash . "<br>";
-                header("Location: userlogin.php");
-            }
 
-            
-            
-
-        }
-
-    ?>
 
 
 
