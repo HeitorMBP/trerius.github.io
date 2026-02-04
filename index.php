@@ -12,7 +12,7 @@ include('process/conn.php'); //conexão = $pdo
     
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
-        //header("location:userlogin.php");
+        header("location:userlogin.php");
         $logado = "USER";
         $isAdmin = 0;
     }else{
