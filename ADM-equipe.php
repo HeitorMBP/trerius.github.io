@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <?php
-    ob_start();
-    session_start();
+<?php
+session_start();
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");
@@ -16,7 +12,10 @@
         header("location:index.php");
     }
     include('process/conn.php');//conexão = $pdo
-    ?>
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organizar equipes</title>

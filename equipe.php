@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
-    <?php
-    ob_start();
-     session_start();
-    include('process/conn.php');//conexão = $pdo
-   
+<?php
+session_start();
+include('process/conn.php');//conexão = $pdo
+
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {   
         $_SESSION['error'] = "Faça o Login!";
@@ -20,6 +12,13 @@
 
     $sql = "SELECT nm_user, nm_imagem, isAdmin, ds_about from tb_user WHERE id_equipe = (select id_equipe from tb_user WHERE id_user =".$id.");";
     ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 </head>
