@@ -1,5 +1,6 @@
 <?php
-include('process/conn.php');//conexão = $pdo
+session_start();
+include('process/conn.php'); //conexão = $pdo
 header("refresh:120");
 ?>
 
@@ -7,7 +8,7 @@ header("refresh:120");
 <html lang="pt-br">
 <head>
     <?php
-    session_start();
+    
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         //header("location:userlogin.php");
