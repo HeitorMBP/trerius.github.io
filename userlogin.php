@@ -1,3 +1,8 @@
+<?php
+ob_start();
+session_start();
+include('process/conn.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,10 +20,6 @@
         }
     </style>
     <?php
-        ob_start();
-    session_start();
-        include('process/conn.php');//conexão = $pdo
-
         if(isset($_POST['acao'])){
             $user = $_POST['user'];
             $senha = $_POST['senha'];
