@@ -344,5 +344,5 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 </body>
 </html>
 <?php
-header("refresh:120");
+//header("refresh:120");
 ?>
