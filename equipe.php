@@ -16,6 +16,7 @@ include('process/conn.php');//conexão = $pdo
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Document</title>
