@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('process/conn.php'); //conexão = $pdo
-header("refresh:120");
+
 ?>
 
 <!DOCTYPE html>
@@ -343,3 +343,6 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 
 </body>
 </html>
+<?php
+header("refresh:120");
+?>
