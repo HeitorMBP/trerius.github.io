@@ -14,6 +14,7 @@
 
     if(!$_SESSION['isAdmin']){
         header("location:index.php");
+        exit;
     }
 
     ?>

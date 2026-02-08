@@ -6,8 +6,9 @@
     
     <title>Document</title>
     <?php
-    include('process/conn.php');//conexão = $pdo
     session_start();
+    include('process/conn.php');//conexão = $pdo
+    
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {   
         $_SESSION['error'] = "Faça o Login!";

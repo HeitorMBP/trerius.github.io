@@ -29,7 +29,7 @@
     }
 
     header("location:ADM-equipe.php");
-
+    exit;
 
 
 

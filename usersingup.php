@@ -1,12 +1,8 @@
+<?php
+session_start();
+include('process/conn.php');//conexão = $pdo
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
@@ -67,8 +63,6 @@
             <div class="col"></div>
         
         
-        </div>
-
         </div>
     <?php
     
