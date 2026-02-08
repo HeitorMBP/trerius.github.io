@@ -1,12 +1,14 @@
-<?php
-session_start();
-include('process/conn.php');
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <?php
+    include('process/conn.php');
+    session_start();
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         $_SESSION['error'] = "Faça login para continuar";
         header("location:index.php");
-        
+        exit;
     }else{
         $logado = $_SESSION['login'];
         $id = $_SESSION['id'];
@@ -23,12 +25,8 @@ include('process/conn.php');
 
         $_SESSION['imagem'] = $imagem;
     }
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+    ?>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conta de <?php echo $logado; ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">

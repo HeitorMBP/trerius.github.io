@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta author="M4St3r_Fr0m_Th3_d4Rk">
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sing Up</title>
+    <title>Document</title>
 </head>
 <body>
     <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta author="M4St3r_Fr0m_Th3_d4Rk">
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -87,6 +83,7 @@
                 echo $senha . "<br>";
                 echo $senha_hash . "<br>";
                 header("Location: userlogin.php");
+                exit;
             }
 
             

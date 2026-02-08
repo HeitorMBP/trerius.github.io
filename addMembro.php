@@ -3,6 +3,7 @@
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");
+        exit;
     }
 
     $logado = $_SESSION['login'];
@@ -10,6 +11,7 @@
     $isAdmin = $_SESSION['isAdmin'] ;
     if(!$isAdmin){
         header("location:index.php");
+        exit;
     }
 
 
@@ -26,14 +28,14 @@
 
     $sql = "UPDATE `tb_user` SET `id_equipe` = ".$idequipe." WHERE `tb_user`.`id_user` = ".$iduser.";";
     $pdo -> exec($sql);
-    header('location:ADM-equipe.php')
+    header('location:ADM-equipe.php');
+    exit;
     ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionando...</title>
     <style>
