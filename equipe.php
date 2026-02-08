@@ -12,6 +12,7 @@
     {   
         $_SESSION['error'] = "Faça o Login!";
         header("location:index.php");
+        exit;
     }
 
     $id = $_SESSION['id'];

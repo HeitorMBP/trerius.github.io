@@ -7,6 +7,7 @@
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");
+        exit;
     }
 
     $id = $_SESSION['id'];

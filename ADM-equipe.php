@@ -13,6 +13,7 @@
     $isAdmin = $_SESSION['isAdmin'] ;
     if(!$isAdmin){
         header("location:index.php");
+        exit;
     }
     include('process/conn.php');//conexão = $pdo
     ?>

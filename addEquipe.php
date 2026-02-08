@@ -3,6 +3,7 @@
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");
+        exit;
     }
 
     $logado = $_SESSION['login'];
@@ -10,6 +11,7 @@
     $isAdmin = $_SESSION['isAdmin'] ;
     if(!$isAdmin){
         header("location:index.php");
+        exit;
     }
 
 
@@ -21,7 +23,8 @@
     $pdo -> exec($sql);
     
 
-    header('location:ADM-equipe.php')
+    header('location:ADM-equipe.php');
+    exit;
     ?>
 <!DOCTYPE html>
 <html lang="pt-br">

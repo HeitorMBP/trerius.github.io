@@ -10,12 +10,14 @@
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");
+        exit;
     }
 
     $id = $_SESSION['id'];
 
     if(!$_SESSION['isAdmin']){
         header("location:index.php");
+        exit;
     }
 
     ?>
@@ -62,6 +64,7 @@
                             $pdo -> exec($sql);
 
                             header("Location:index.php");
+                            exit;
                         }
                     }
                 }   

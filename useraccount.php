@@ -8,7 +8,7 @@
     {
         $_SESSION['error'] = "Faça login para continuar";
         header("location:index.php");
-        
+        exit;
     }else{
         $logado = $_SESSION['login'];
         $id = $_SESSION['id'];

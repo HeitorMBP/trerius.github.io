@@ -43,6 +43,7 @@
                  $user = $pdo -> query($sql) -> fetch(PDO::FETCH_ASSOC) ;
                 $_SESSION['imagem'] = $user['nm_imagem'];
                 header("Location: index.php");
+                exit;
             }else{
                 unset ($_SESSION['login']);
                 unset ($_SESSION['senha']);

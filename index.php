@@ -1,6 +1,7 @@
 <?php
 include('process/conn.php');//conexão = $pdo
 header("refresh:120");
+exit;
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +11,10 @@ header("refresh:120");
     session_start();
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
-        //header("location:userlogin.php");
         $logado = "USER";
         $isAdmin = 0;
+        header("location:userlogin.php");
+        exit;  
     }else{
         $logado = $_SESSION['login'];
         $id = $_SESSION['id'];

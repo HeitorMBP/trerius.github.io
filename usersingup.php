@@ -83,6 +83,7 @@
                 echo $senha . "<br>";
                 echo $senha_hash . "<br>";
                 header("Location: userlogin.php");
+                exit;
             }
 
             
