@@ -1,32 +1,29 @@
 <?php
-session_start();
-include('process/conn.php'); //conexão = $pdo
-
-// auth check must run before any output
-if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
-    header("location:userlogin.php");
-    exit;
-}
-
-// populate commonly used session vars for the page
-$logado = $_SESSION['login'] ?? 'USER';
-$id = $_SESSION['id'] ?? null;
-$isAdmin = $_SESSION['isAdmin'] ?? 0;
-
-// capture session error to echo later (avoid output here)
-$sessionError = isset($_SESSION['error']) ? $_SESSION['error'] : null;
-if(isset($_SESSION['error'])){ unset($_SESSION['error']); }
-
+include('process/conn.php');//conexão = $pdo
+header("refresh:120");
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <?php
-    if(isset($sessionError)){
-        echo "<script type='text/javascript'>alert('" . addslashes($sessionError) . "');</script>";
-        unset($sessionError);
+    session_start();
+     if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+    {
+        //header("location:userlogin.php");
+        $logado = "USER";
+        $isAdmin = 0;
+    }else{
+        $logado = $_SESSION['login'];
+        $id = $_SESSION['id'];
+        $isAdmin = $_SESSION['isAdmin'] ;
+        
     }
+    if(isset($_SESSION['error'])){
+         echo "<script type='text/javascript'>alert('" . $_SESSION['error'] . "');</script>";
+        unset($_SESSION['error']); 
+    }
+    
     ?>
 
 
@@ -35,11 +32,8 @@ if(isset($_SESSION['error'])){ unset($_SESSION['error']); }
 
     <meta author="M4St3r_Fr0m_Th3_d4Rk">
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="120">
     <link rel="stylesheet" href="style/div.css">
-    
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <title>

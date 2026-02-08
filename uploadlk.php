@@ -1,7 +1,14 @@
-<?php
-session_start();
-include('process/conn.php');//conexão = $pdo
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de arquivos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+     <?php
+    include('process/conn.php');//conexão = $pdo
+    session_start();
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");
@@ -9,25 +16,11 @@ include('process/conn.php');//conexão = $pdo
 
     $id = $_SESSION['id'];
 
-// handle POST before any output so header() works (preserve original logic)
-if(isset($_POST['acao'])){
-    echo "<script>alert(".$_POST['title'].")</script>";
-    $sql = "INSERT INTO `tb_noticias` (`id_noticia`, `nm_imagem`, `nm_titulo`, `ds_noticia`) VALUES (NULL, '".$_POST['link']."', '".$_POST['title']."', '".$_POST['text']."');";
-    $pdo -> exec($sql);
-    header("Location: index.php");
-    exit;
-}
+    if(!$_SESSION['isAdmin']){
+        header("location:index.php");
+    }
 
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload de arquivos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    ?>
 </head>
 <body>
     <style>
@@ -47,7 +40,18 @@ if(isset($_POST['acao'])){
             <div class="col ">
 
 
+            <?php
 
+                if(isset($_POST['acao'])){
+                            echo "<script>alert(".$_POST['title'].")</script>";
+                            $sql = "INSERT INTO `tb_noticias` (`id_noticia`, `nm_imagem`, `nm_titulo`, `ds_noticia`) VALUES (NULL, '".$_POST['link']."', '".$_POST['title']."', '".$_POST['text']."');";
+                            
+                            $pdo -> exec($sql);
+
+                            header("Location:index.php");
+                        }
+               
+            ?>
                 
                     <div class="card m-5 bg-dark" style="width: 20rem;">
                         <div class="card-body">

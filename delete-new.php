@@ -1,7 +1,9 @@
-<?php
-session_start();
-include('process/conn.php');//conexão = $pdo
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    include('process/conn.php');//conexão = $pdo
+    session_start();
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         header("location:index.php");
@@ -11,23 +13,10 @@ include('process/conn.php');//conexão = $pdo
 
     if(!$_SESSION['isAdmin']){
         header("location:index.php");
-        exit;
     }
 
-// handle POST before output
-if(isset($_POST['acao'])){
-    $sql = "DELETE FROM `tb_noticias` WHERE `tb_noticias`.`id_noticia` = ".intval($_POST['noticia']);
-    $pdo->exec($sql);
-    header("Location: index.php");
-    exit;
-}
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    ?>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -50,6 +39,22 @@ if(isset($_POST['acao'])){
             <div class="col ">
 
 
+            <?php
+
+                if(isset($_POST['acao'])){
+
+
+                            
+                            
+                            $sql = "DELETE FROM `tb_noticias` WHERE `tb_noticias`.`id_noticia` = ".$_POST['noticia'];
+                            
+                            $pdo -> exec($sql);
+
+                            header("Location:index.php");
+                        }
+               
+            ?>
+                
                     <div class="card m-5 bg-dark" style="width: 20rem;">
                         <div class="card-body">
                             <h5 class="card-title">Apague uma notícia</h5>

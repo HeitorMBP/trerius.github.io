@@ -1,7 +1,9 @@
-<?php
-session_start();
-include('process/conn.php');
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <?php
+    include('process/conn.php');
+    session_start();
      if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         $_SESSION['error'] = "Faça login para continuar";
@@ -23,36 +25,8 @@ include('process/conn.php');
 
         $_SESSION['imagem'] = $imagem;
     }
-
-// handle account POSTs before any output (preserve original logic)
-if(isset($_POST['salvar'])){
-    if(isset($_FILES['file'])){
-        $arquivo = $_FILES['file'];
-        $arquivoNovo = explode('.',$arquivo['name']);
-        if($arquivoNovo[sizeof($arquivoNovo)-1] != 'jpg'){
-            die('Você não pode fazer upload desse tipo de arquivoNovo, faça de JPG');
-        }else{
-            move_uploaded_file($arquivo['tmp_name'],'profilePics/'.$arquivo['name']);
-            $sql = "UPDATE `tb_user` SET `nm_imagem` = 'profilePics/".$arquivo['name']."' WHERE `tb_user`.`id_user` =".$id;
-            $pdo -> exec($sql);
-            header('refresh:1');
-            exit;
-        }
-    }
-}
-
-if(isset($_POST['salvar-texto'])){
-    $sql = "UPDATE `tb_user` SET `ds_about` = '".$_POST['about']."' WHERE `tb_user`.`id_user` =".$id;
-    $pdo -> exec($sql);
-    header('refresh:1');
-    exit;
-}
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+    ?>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conta de <?php echo $logado; ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -147,7 +121,30 @@ if(isset($_POST['salvar-texto'])){
  <?php
 
                 
+                   if(isset($_POST['salvar'])){
 
+                     if(isset($_FILES['file'])){
+                        $arquivo = $_FILES['file'];
+
+                        $arquivoNovo = explode('.',$arquivo['name']);
+
+                        if($arquivoNovo[sizeof($arquivoNovo)-1] != 'jpg'){
+                            die('Você não pode fazer upload desse tipo de arquivoNovo, faça de JPG');
+                            
+                        }else{
+                                         
+                            move_uploaded_file($arquivo['tmp_name'],'profilePics/'.$arquivo['name']);
+
+                           
+                            $sql = "UPDATE `tb_user` SET `nm_imagem` = 'profilePics/".$arquivo['name']."' WHERE `tb_user`.`id_user` =".$id;
+                            
+                            $pdo -> exec($sql);
+                            header('refresh:1');
+                            
+                        }
+                    }
+                   
+                   }
                 
             ?>
          
@@ -172,6 +169,18 @@ if(isset($_POST['salvar-texto'])){
 
 
 
+
+
+<?php
+    if(isset($_POST['salvar-texto'])){
+        $sql = "UPDATE `tb_user` SET `ds_about` = '".$_POST['about']."' WHERE `tb_user`.`id_user` =".$id;
+                            
+                            $pdo -> exec($sql);
+                            header('refresh:1');
+    }
+
+
+?>
 
 
 
