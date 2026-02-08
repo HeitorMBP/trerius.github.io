@@ -31,7 +31,7 @@ exit;
 
 
 
-
+    <link rel="shortcut icon" href="img/Trerius.png" type="image/x-icon">
     <meta author="M4St3r_Fr0m_Th3_d4Rk">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
